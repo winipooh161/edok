@@ -67,7 +67,7 @@
                                             <a href="<?php echo e(route('categories.show', $category->slug)); ?>" class="category-link">
                                                 <div class="d-flex align-items-center p-2 rounded hover-shadow">
                                                     <div class="category-icon me-3 rounded-circle <?php echo e($category->getColorClass()); ?> text-white">
-                                                        <i class="fas fa-utensils"></i>
+                                                        <i class="fas <?php echo e($category->getIconClass()); ?>"></i>
                                                     </div>
                                                     <div>
                                                         <h5 class="mb-0"><?php echo e($category->name); ?></h5>

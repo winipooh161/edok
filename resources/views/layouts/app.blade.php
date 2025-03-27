@@ -161,7 +161,7 @@
                 <div class="row">
                     <div class="col-md-4">
                         <h5 class="mb-3">О проекте</h5>
-                        <p class="text-muted">Culinary Book - ваша онлайн кулинарная книга с тысячами разнообразных рецептов.</p>
+                        <p class="text-muted">Яедок.ру - ваша онлайн кулинарная книга с тысячами разнообразных рецептов.</p>
                     </div>
                     <div class="col-md-4">
                         <h5 class="mb-3">Быстрые ссылки</h5>
@@ -174,10 +174,12 @@
                     <div class="col-md-4">
                         <h5 class="mb-3">Связаться с нами</h5>
                         <p class="text-muted">
-                            <i class="fas fa-envelope me-2"></i> info@example.com<br>
-                            <i class="fas fa-phone me-2"></i> +7 (123) 456-7890
+                            <i class="fas fa-envelope me-2"></i> <a href="mailto:w1nishko@yandex.ru">w1nishko@yandex.ru</a><br>
+                            <i class="fas fa-phone me-2"></i> <a href="tel:+7 904 448-22-83
+">+7 904 448-22-83
+</a>
                         </p>
-                        <div class="social-icons">
+                        {{-- <div class="social-icons">
                             <a href="#" class="me-2 text-decoration-none">
                                 <i class="fab fa-facebook fa-lg"></i>
                             </a>
@@ -187,7 +189,7 @@
                             <a href="#" class="me-2 text-decoration-none">
                                 <i class="fab fa-youtube fa-lg"></i>
                             </a>
-                        </div>
+                        </div> --}}
                     </div>
                 </div>
                 <div class="row mt-3">

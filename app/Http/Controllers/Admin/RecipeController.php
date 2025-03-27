@@ -37,32 +37,57 @@ class RecipeController extends Controller
         }
         
         // Применяем фильтр по поиску
-        if ($request->has('search') && !empty($request->search)) {
-            $query->where(function($q) use ($request) {
-                $q->where('title', 'like', '%' . $request->search . '%')
-                  ->orWhere('ingredients', 'like', '%' . $request->search . '%')
-                  ->orWhere('description', 'like', '%' . $request->search . '%');
+        if ($request->filled('search')) {
+            $searchTerm = '%' . $request->search . '%';
+            $query->where(function($q) use ($searchTerm) {
+                $q->where('title', 'like', $searchTerm)
+                  ->orWhere('ingredients', 'like', $searchTerm)
+                  ->orWhere('description', 'like', $searchTerm)
+                  ->orWhere('instructions', 'like', $searchTerm);
             });
         }
         
         // Применяем фильтр по категории
-        if ($request->has('category_id') && !empty($request->category_id)) {
+        if ($request->filled('category_id')) {
             $query->whereHas('categories', function($q) use ($request) {
                 $q->where('categories.id', $request->category_id);
             });
         }
         
         // Применяем фильтр по статусу публикации
-        if ($request->has('status') && $request->status !== '') {
+        if ($request->filled('status')) {
             $query->where('is_published', $request->status);
         }
 
         // Фильтр по автору (только для админов)
-        if (auth()->user()->isAdmin() && $request->has('user_id') && $request->user_id) {
+        if (auth()->user()->isAdmin() && $request->filled('user_id')) {
             $query->where('user_id', $request->user_id);
         }
         
-        $recipes = $query->latest()->paginate(10);
+        // Применяем сортировку
+        $sort = $request->input('sort', 'created_at_desc');
+        switch ($sort) {
+            case 'created_at_asc':
+                $query->oldest();
+                break;
+            case 'title_asc':
+                $query->orderBy('title', 'asc');
+                break;
+            case 'title_desc':
+                $query->orderBy('title', 'desc');
+                break;
+            case 'views_desc':
+                $query->orderBy('views', 'desc');
+                break;
+            default:
+                $query->latest(); // сортировка по умолчанию - сначала новые
+                break;
+        }
+        
+        // Количество элементов на странице
+        $perPage = $request->input('per_page', 10);
+        
+        $recipes = $query->paginate($perPage)->withQueryString();
         $categories = Category::orderBy('name')->get();
         
         // Для админов добавляем список пользователей для фильтра
