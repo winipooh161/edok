@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?><sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+        <sitemap>
+        <loc>https://im-edok.ru/sitemap-main.xml</loc>
+        <lastmod>2025-03-27T11:11:05+00:00</lastmod>
+    </sitemap>
+        <sitemap>
+        <loc>https://im-edok.ru/sitemap-categories.xml</loc>
+        <lastmod>2025-03-27T10:45:03+00:00</lastmod>
+    </sitemap>
+        <sitemap>
+        <loc>https://im-edok.ru/sitemap-recipes.xml</loc>
+        <lastmod>2025-03-27T11:08:09+00:00</lastmod>
+    </sitemap>
+        <sitemap>
+        <loc>https://im-edok.ru/sitemap-users.xml</loc>
+        <lastmod>2025-03-25T16:25:51+00:00</lastmod>
+    </sitemap>
+    </sitemapindex>
